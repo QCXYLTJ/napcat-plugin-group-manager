@@ -1,5 +1,5 @@
 {
-  "name": "napcat-plugin-group-manager",
+  "name": "groupmanager",
   "version": "1.2.1",
   "type": "module",
   "main": "dist/index.mjs",

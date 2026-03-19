@@ -1,6 +1,6 @@
-# 🛡️ NapCat 群管插件 (napcat-plugin-group-manager)
+# 🛡️ NapCat 群管插件 (groupmanager)
 
-**napcat-plugin-group-manager** 是一款专为 NapCat (OneBot 11) 设计的轻量级、功能全面的群组管理插件。集成了**入群欢迎**、**违禁词过滤**、**群名片锁定**、**针对模式**以及**黑白名单管理**等实用功能。
+**groupmanager** 是一款专为 NapCat (OneBot 11) 设计的轻量级、功能全面的群组管理插件。集成了**入群欢迎**、**违禁词过滤**、**群名片锁定**、**针对模式**以及**黑白名单管理**等实用功能。
 
 ## ✨ 主要功能
 
@@ -19,7 +19,7 @@
 
 ## 📁 项目结构
 
-napcat-plugin-group-manager/
+groupmanager/
 ├── package.json
 ├── dist/
 │   └── index.mjs    # 构建产物
@@ -40,7 +40,7 @@ napcat-plugin-group-manager/
    构建成功后，dist 目录下会生成 index.mjs。
 
 2. 安装到 NapCat
-   将 package.json 和 dist 文件夹复制到 NapCat 的 plugins/napcat-plugin-group-manager/ 目录下。
+   将 package.json 和 dist 文件夹复制到 NapCat 的 plugins/groupmanager/ 目录下。
 
 3. 重启 NapCat
    重启后即可在 WebUI 中看到插件配置。
@@ -100,5 +100,5 @@ napcat-plugin-group-manager/
 ---
 
 ## 📝 开发信息
-- 版本: 1.2.1
+- 版本: 1.2.0
 - 语言: TypeScript
