@@ -115,11 +115,11 @@ async function onMessage(ctx, event) {
 	const ms = await callOB11(ctx, 'get_group_member_list', { group_id: groupId, no_cache: true });
 	const selfguanli = ['owner', 'admin'].includes(own.role);
 	const userguanli = ['owner', 'admin'].includes(event.sender.role);
-	const userid = [];
+	const atlist = [];
 	const textlist = [];
 	for (const obj of event.message) {
 		if (obj.type === 'at') {
-			userid.push(obj.data.qq);
+			atlist.push(obj.data.qq);
 		}
 		if (obj.type === 'text') {
 			textlist.push(obj.data.text);
@@ -197,7 +197,7 @@ async function onMessage(ctx, event) {
 
 	// 自动反击
 	const fanying = function () {
-		if (!userAdmin && currentConfig.ownlist.some((id) => userid.includes(id)) && ['妈', '爹', '爸', '狗', '逼', '🐎', '🐴', 'nm', '屄'].some((s) => textall.includes(s))) {
+		if (!userAdmin && currentConfig.ownlist.some((id) => atlist.includes(id)) && ['妈', '爹', '爸', '狗', '逼', '🐎', '🐴', 'nm', '屄'].some((s) => textall.includes(s))) {
 			callOB11(ctx, 'send_group_msg', {
 				group_id: groupId,
 				message: [
@@ -242,7 +242,7 @@ async function onMessage(ctx, event) {
 		const atSeg = event.message.find((s) => s.type === 'at');
 		const targetId = atSeg ? String(atSeg.data?.qq) : params;
 		if (cmd == '禁言骰子' && selfguanli) {
-			setTimeout(() => {
+			setTimeout(async function () {
 				loadConfig(ctx);
 				const mins = Math.floor(Math.random() * 86400) - 43200; // -30 ~ 30
 				const currentBalance = currentConfig.creditBalances[userId] || 0;
@@ -250,7 +250,15 @@ async function onMessage(ctx, event) {
 				saveConfig(ctx, { creditBalances: currentConfig.creditBalances });
 				const yue = currentConfig.creditBalances[userId];
 				if (yue < 0) {
-					const duration = Math.abs(yue) * 60; // 转秒
+					let duration = Math.abs(yue) * 60; // 转秒
+					const shutlist = await callOB11(ctx, 'get_group_shut_list', { group_id: groupId, no_cache: true });
+					const userinfo = shutlist.find((m) => String(m.uin) == userId);
+					if (userinfo) {
+						const now = Math.floor(Date.now() / 1000);
+						duration = duration + userinfo.shutUpTime - now;
+					}
+					currentConfig.creditBalances[userId] = 0;
+					saveConfig(ctx, { creditBalances: currentConfig.creditBalances });
 					callOB11(ctx, 'set_group_ban', {
 						group_id: groupId,
 						user_id: userId,
@@ -260,7 +268,7 @@ async function onMessage(ctx, event) {
 						group_id: groupId,
 						message: [
 							{ type: 'at', data: { qq: userId } },
-							{ type: 'text', data: { text: ` 原有禁言余额 ${currentBalance} ，骰子点数 ${mins}，当前禁言余额 ${yue} ，禁言 ${Math.abs(yue)} 分钟 🎲` } },
+							{ type: 'text', data: { text: ` 原有禁言余额 ${currentBalance} ，骰子点数 ${mins}，当前禁言余额 ${yue} 。因为余额为负数，增加禁言 ${Math.abs(yue)} 分钟 🎲，然后将禁言余额归零。` } },
 						],
 					});
 				} // 负数：禁言目标
@@ -278,10 +286,10 @@ async function onMessage(ctx, event) {
 				} // 正数：增加用户的禁言天数余额
 			}, Math.random() * 1000);
 		}
-		if (cmd === '禁言') {
+		if (cmd === '禁言' && selfguanli) {
 			loadConfig(ctx);
 			const mins = Number(lockName);
-			const duration = mins * 60;
+			let duration = mins * 60;
 			if (userguanli) {
 				await callOB11(ctx, 'set_group_ban', {
 					group_id: groupId,
@@ -299,18 +307,24 @@ async function onMessage(ctx, event) {
 						await callOB11(ctx, 'send_group_msg', { group_id: groupId, message: `❌ 你的余额不足（剩余 ${balance} 分钟。` });
 					} // 检查余额
 					else {
+						const shutlist = await callOB11(ctx, 'get_group_shut_list', { group_id: groupId, no_cache: true });
+						const userinfo = shutlist.find((m) => String(m.uin) == targetId);
+						if (userinfo) {
+							const now = Math.floor(Date.now() / 1000);
+							duration = duration + userinfo.shutUpTime - now;
+						}
+						currentConfig.creditBalances[userId] = balance - mins;
+						saveConfig(ctx, { creditBalances: currentConfig.creditBalances });
 						await callOB11(ctx, 'set_group_ban', {
 							group_id: groupId,
 							user_id: targetId,
 							duration: duration,
 						});
-						currentConfig.creditBalances[userId] = balance - mins;
-						saveConfig(ctx, { creditBalances: currentConfig.creditBalances });
 						await callOB11(ctx, 'send_group_msg', {
 							group_id: groupId,
 							message: [
 								{ type: 'at', data: { qq: targetId } },
-								{ type: 'text', data: { text: ` 已被 ${userId} 禁言 ${mins} 天，扣除 ${mins} 天余额。` } },
+								{ type: 'text', data: { text: ` 已被 ${userId} 禁言 ${mins} 分钟，扣除 ${mins} 分钟余额，剩余余额 ${currentConfig.creditBalances[userId]}` } },
 							],
 						});
 					} // 执行禁言

@@ -1,0 +1,49 @@
+03-19 18:44:59 [info] [QQ版本兼容性检测] 当前版本Appid未内置 通过Major获取 为了更好的性能请尝试更新NapCat
+03-19 18:44:59 [info] [PacketHandler] 加载成功
+03-19 18:44:59 [info] [Napi2NativeLoader] 加载成功
+03-19 18:44:59 [info] [FFmpeg] 检查 Native Addon 可用性...
+03-19 18:44:59 [info] [FFmpeg] ✓ 使用 Native Addon 适配器
+03-19 18:44:59 [warn] NativePacketClient: 未找到对应版本的偏移数据: 9.9.27-46233-x64
+03-19 18:44:59 [info] [NapCat] [Core] NapCat.Core Version: 4.17.25
+03-19 18:44:59 [warn] File already deleted: D:\软件\NapCat.Shell.Windows.Node\napcat\logs\2026-03-11_11-34-46.228.log
+03-19 18:44:59 [warn] File already deleted: D:\软件\NapCat.Shell.Windows.Node\napcat\logs\2026-03-11_11-34-46.224.log
+03-19 18:44:59 [warn] File already deleted: D:\软件\NapCat.Shell.Windows.Node\napcat\logs\2026-03-09_10-27-15.695.log
+03-19 18:44:59 [info] [NapCat] [WebUi] WebUi Token: 277f75fabb7b
+03-19 18:44:59 [info] [NapCat] [WebUi] WebUi User Panel Url: http://127.0.0.1:6100/webui?token=277f75fabb7b
+03-19 18:44:59 [info] [NapCat] [WebUi] WebUi User Panel Url: http://[::]:6100/webui?token=277f75fabb7b
+03-19 18:44:59 [info] 等待网络连接...
+03-19 18:45:00 [info] 网络已连接
+03-19 18:45:00 [info] 没有 -q 指令指定快速登录，将使用二维码登录方式
+03-19 18:45:00 [info] 可用于快速登录的 QQ：
+1. 1622350454 江璃
+2. 1570245877 ROCO小维
+3. 1476811518 我的电脑.
+03-19 18:45:00 [warn] 请扫描下面的二维码，然后在手Q上授权登录：
+03-19 18:45:00 [warn] 
+
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▄▄▄ ▀▄██ ▀  █▄████ ▄▄▄▄▄ █
+█ █   █ ██▄▀ █ ▀▄▄▀▄█▀▄▄▄ █ █   █ █
+█ █▄▄▄█ ██▀▄ ▄████▄ ▄▀ ▄▀██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█ ▀▄█ ▀ █ █ ▀▄█▄▀ █▄▄▄▄▄▄▄█
+█ ▄▀  █▄▀▀▄▀█▄██▀▀▀▀▀▀▀▀█▄█▄▀▀█▀▀▄█
+██ █ ▄█▄█ ▄██▄█▄ █▀ ▀█▄ ▄ ▀  ▄▀▀▄▄█
+█ ▄ ▄█▄▄█▄  █▀▀▄  ▀▀█▄▀▀▄█▀▄▄███▄▄█
+█▄█ █▀▄▄█ █ █▀▄▀ ▄▄█ ▄█ ██▀▄█ █▀█▀█
+█████▀█▄▄▀▀▄ ▄▄  ▀ ▀█ ██ ▄▄ ▀ ▄█  █
+█▀▄▀▄▄█▄ ▄█▀▀▄  ▄█▄▄▄ ██▄██▀█▄█▀▀ █
+█▀█ ▄▀ ▄█ ▄ ▄▀██▄█▄▄▀▄ ▀ ▀▄█▀▀▀█▀██
+█ █ ▄▀▀▄▄█▀▀ ▀█  ▄ ██▄▄█▄▀ ▀ ▄█▀▄▄█
+█▄▄█▄▄▄▄▄ ▄█▄▄▀▄ ▀▄█▄█ ██ ▄▄▄ ▀▀ ██
+█ ▄▄▄▄▄ ███▄ ▄█ ▄█▄▀ ▄██  █▄█ ▀ █▀█
+█ █   █ █  ▀▀ ▄ ▀▀▄▀▀ ▀ ▄▄ ▄▄▄▀█▄▄█
+█ █▄▄▄█ █▀▄▀▄▄    ▄▀  █▀▀█▀▀▄   ▀ █
+█▄▄▄▄▄▄▄█▄█▄█████▄██▄▄███▄▄█▄█▄████
+
+二维码解码URL: https://txz.qq.com/p?k=ERCcpVlz6IOopgpzGk-cJbJoA5VLN-wQ&f=1600001604
+如果控制台二维码无法扫码，可以复制解码url到二维码生成网站生成二维码再扫码，也可以打开下方的二维码路径图片进行扫码。
+03-19 18:45:00 [warn] 二维码已保存到 D:\软件\NapCat.Shell.Windows.Node\napcat\cache\qrcode.png
+03-19 18:45:29 [debug] 本账号数据/缓存目录： C:\Users\李\Documents\Tencent Files\NapCat\data
+03-19 18:45:29 [debug] [Core] [Config] 配置文件D:\软件\NapCat.Shell.Windows.Node\napcat\config\napcat_1622350454.json加载 {"fileLog":false,"consoleLog":true,"fileLogLevel":"debug","consoleLogLevel":"info","packetBackend":"auto","packetServer":"","o3HookMode":1}
+03-19 18:45:29 [error] [Core] [Packet] PacketBackend 不支持当前QQ版本架构：9.9.27-46233-x64，
+            请参照 https://github.com/NapNeko/NapCatQQ/releases/tag/v4.17.25 配置正确的QQ版本！

@@ -6,12 +6,13 @@
   "packetBackend": "auto",
   "packetServer": "",
   "o3HookMode": 1,
+  "autoTimeSync": true,
   "bypass": {
-    "hook": false,
-    "window": false,
-    "module": false,
-    "process": false,
-    "container": false,
-    "js": false
+    "hook": true,
+    "window": true,
+    "module": true,
+    "process": true,
+    "container": true,
+    "js": true
   }
 }
